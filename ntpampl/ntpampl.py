@@ -50,14 +50,10 @@ p = Ether(dst=options.dst) \
                 str(RandString(size=options.size-16)))
 
 if options.fire:
-    try:
-        if options.count == 0:
-            sendp(p,loop=1,iface=options.iface)
-        else:
-            sendp(p,count=options.count,iface=options.iface)
-
-    except KeyboardInterrupt:
-        print '\nInterrupted.'
+    if options.count == 0:
+        sendp(p,loop=1,inter=options.inter,iface=options.iface)
+    else:
+        sendp(p,count=options.count,inter=options.inter,iface=options.iface)
 
 else:
     if options.hexdump:
