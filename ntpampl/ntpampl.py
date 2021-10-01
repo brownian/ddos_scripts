@@ -15,18 +15,18 @@ parser = argparse.ArgumentParser(
 )
 
 parser.add_argument('--fire', action='store_true',
-                    help='send instead of show packets (default: false)')
+                    help='send instead of show packets (default: %(default)s)')
 
 parser.add_argument('-i', '--iface', required=True)
 
 parser.add_argument('-s', '--size', type=int, default=512,
-        help='UDP packet size, default: 512')
+        help='UDP packet size, default: %(default)s')
 
 parser.add_argument('-c', '--count', type=int, default=10,
-                    help="packets to send (default: 10, 0 to unlim)")
+                    help="packets to send (default: %(default)s, 0 to unlim)")
 
 parser.add_argument('-t', '--inter', type=float, default=0.001,
-                    help="interval between packets (default: 0.001 second)")
+                    help="interval between packets (default: %(default)s second)")
 
 parser.add_argument('--dst', required=True, help="dst MAC")
 
@@ -37,7 +37,7 @@ parser.add_argument('--psrc', help="src IP", required=True)
 parser.add_argument('--pdst', help="dst IP", required=True)
 
 parser.add_argument('--hexdump', default=False, action='store_true',
-                    help="show hex dump (if not --fire; default: false)")
+                    help="show hex dump (if not --fire; default: %(default)s)")
 
 options = parser.parse_args()
 
