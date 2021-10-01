@@ -32,7 +32,7 @@ parser.add_argument('--dst', required=True, help="dst MAC")
 
 # parser.add_argument('--src', help="default: auto")
 
-parser.add_argument('--psrc', help="src IP", required=True)
+parser.add_argument('--psrc', help="src IP")
 
 parser.add_argument('--pdst', help="dst IP", required=True)
 
@@ -44,7 +44,7 @@ options = parser.parse_args()
 #
 # make initial packet:
 p = Ether(dst=options.dst) \
-        / IP(version=4, dst=options.pdst, src=RandIP()) \
+        / IP(version=4, dst=options.pdst, src=options.psrc or RandIP()) \
         / UDP(sport=123,dport=123) \
         / Raw(load="\xd7\x00\x03\x2a\x00\x06\x00\x48" +
                 str(RandString(size=options.size-16)))
